@@ -7,6 +7,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
+    "strictPropertyInitialization": false, /*Bu kod değişkenleri tanımlarken alınan hataları düzeltmek için*/
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,

@@ -1,0 +1,79 @@
+
+
+<form [formGroup]="payAddForm" class="container">
+
+    <div class="checkout-panel">
+        <div class="panel-body">
+          <h2 class="title">Checkout here!</h2>
+       
+       
+          <div class="payment-method">
+            <label for="card" class="method card">
+              <div class="card-logos">
+                <img src="https://designmodo.com/demo/checkout-panel/img/visa_logo.png"/>
+                <img src="https://designmodo.com/demo/checkout-panel/img/mastercard_logo.png"/>
+              </div>
+       
+              <div class="radio-input">
+                <input id="card" type="radio" name="payment">
+                Pay AU$20.99 with credit card
+              </div>
+            </label>
+       
+            <label for="paypal" class="method paypal">
+              <img src="https://designmodo.com/demo/checkout-panel/img/paypal_logo.png"/>
+              <div class="radio-input">
+                <input id="paypal" type="radio" name="payment">
+                Pay AU$20.99 with PayPal
+              </div>
+            </label>
+          </div>
+
+          <select (change)="cardSelectChangeHandler($event)" class="form-select" aria-label="Default select example">
+      <option selected>Kredi Kartları</option>
+      <option *ngFor="let cards of cards" value="{{cards.id}}">Cart Numarası : {{ cards.cardNumber }}</option>
+          </select>
+       
+          <div class="input-fields">
+            <div class="column-1">
+              <label for="companyName">Name</label>
+              <input formControlName="companyName" [(ngModel)]="customer.companyName" type="text" id="companyName" />
+       
+              <div class="small-inputs">
+                <div>
+                  <label for="expiration">Valid date</label>
+                  <input formControlName="expiration" [(ngModel)]="card.expiration" type="text" id="expiration"/>
+                </div>
+       
+                <div>
+                  <label for="cvc">CVV / CVC *</label>
+                  <input formControlName="cvc" [(ngModel)]="card.cvc" type="text" id="cvc"/>
+                </div>
+              </div>
+       
+            </div>
+            <div class="column-2">
+              <label for="cardNumber">Card Number</label>
+              <input formControlName="cardNumber" [(ngModel)]="card.cardNumber" type="text" id="cardNumber"/>
+       
+              <span class="info">* CVV veya CVC, kartınızın arkasındaki numarasından ayrı olarak benzersiz üç basamaklı bir kart güvenlik kodudur</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-check">
+          <input [(ngModel)]="isSaveCard" class="form-check-input" type="checkbox" id="flexCheckIndeterminate">
+          <label class="form-check-label" for="flexCheckIndeterminate">
+            Kart Bilgilerim Kaydedilmesin
+          </label>
+        </div>
+       
+        <div class="panel-footer text-center">
+          <button (click)="pay()" class="btn next-btn">Öde</button>
+        </div>
+      </div>
+      
+      
+
+    </form>
+

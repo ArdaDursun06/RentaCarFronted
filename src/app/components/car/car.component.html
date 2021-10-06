@@ -1,0 +1,43 @@
+<div class="container-fluit">
+    <div class="row">
+      <div class="col-md-3">
+        <app-filter></app-filter>
+      </div>
+      <div class="col-md-9">
+  
+        <div class="mt-5">
+          <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" 
+          placeholder="arama ifadesi giriniz..">
+        </div>
+        
+        <br>
+        
+        <div *ngIf="dataLoaded==false" class="spinner-border text-primary text-align-center" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        
+        <div class="row" *ngIf="dataLoaded==true">
+            <div *ngFor="let car of carDetails | filtercar:filterText" class="card col-md-4">
+                <img [src]="getImageByCar(car)" class="card-img-top" width="320" height="200" alt={{car.description}}>
+                <div class="card-body">
+                  <h5 class="card-title d-flex justify-content-center">{{car.carName}}</h5>
+                  <p class="card-text d-flex justify-content-center">{{car.description}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Brand: {{car.brandName}}</li>
+                  <li class="list-group-item">Color: {{car.colorName}}</li>
+                  <li class="list-group-item">Model Year: {{car.modelYear}}</li>
+                  <li class="list-group-item">Daily Price: {{car.dailyPrice}} ₺</li>
+                </ul>
+                <div class="card-body">
+                    <section style="float:left">
+                        <button routerLink="/car/details/{{car.carId}}" type="button" class="btn btn-primary">Details</button>
+                      </section>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  

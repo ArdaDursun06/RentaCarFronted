@@ -1,0 +1,145 @@
+<div class="content">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+    <div class="card-body">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div *ngFor="let image of carImages" [class]="getClass(image)">
+            <img src="{{imageBasePath}}{{image.imagePath}}" class="d-block w-100" alt="{{car.id}}">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="my-3">
+          <div class="form-group">
+            <input
+              type="file"
+              id="image"
+              class="form-control"
+              [(ngModel)]="Image"
+            />
+          </div>
+        </div>
+        <div class="text-center">
+          <button (click)="addImage()" class="btn btn-primary w-25">Resim Ekle</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <div class="content">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header text-center"><h5 class="title">Araba güncelle</h5></div>
+          <div class="card-body">
+            <form [formGroup]="carUpdateForm">
+    
+              <div class="mb-3">
+                <label for="id">Id</label>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    id="id"
+                    formControlName="id"
+                    class="form-control"
+                    [(ngModel)]="car.id"
+                  />
+                </div>
+              </div>
+    
+              <div class="mb-3">
+                <label for="brandId">Marka Id</label>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    id="brandId"
+                    formControlName="brandId"
+                    class="form-control"
+                    [(ngModel)]="car.brandId"
+                  />
+                </div>
+              </div>
+    
+              <div class="mb-3">
+                <label for="modelId">Model Id</label>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    id="modelId"
+                    formControlName="modelId"
+                    class="form-control"
+                    [(ngModel)]="car.modelId"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="colorId">Renk Id</label>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    id="colorId"
+                    formControlName="colorId"
+                    class="form-control"
+                    [(ngModel)]="car.colorId"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="modelYear">Model Yılı</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="modelYear"
+                    formControlName="modelYear"
+                    class="form-control"
+                    [(ngModel)]="car.modelYear"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="dailyPrice">Günlük Fiyatı</label>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    id="dailyPrice"
+                    formControlName="dailyPrice"
+                    class="form-control"
+                    [(ngModel)]="car.dailyPrice"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="description">Açıklama</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="description"
+                    formControlName="description"
+                    class="form-control"
+                    [(ngModel)]="car.description"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div style="text-align: center" class="card-footer">
+            <button class="btn btn-fill btn-primary" (click)="update()">
+              Güncelle
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    

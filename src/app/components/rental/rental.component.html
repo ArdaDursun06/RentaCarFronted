@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header text-center">
+      <img  src="{{imageBasePath}}{{carImage.imagePath}}">
+    </div>
+    <div class="card-body text-center">
+      <b>{{carDetail.carName}}</b>
+    </div>
+    <div class="card-footer">
+  
+      <select (change)="customerSelectChangeHandler($event)" class="form-select">
+        <option selected>Kullanıcı</option>
+        <option *ngFor="let customer of customers" value="{{customer.id}}">{{ customer.companyName }}</option>
+      </select>
+  
+      <div class="mb-3">
+        <label for="rentalStartDateTime" class="form-label">Kiralama Başlangıç Tarihi</label>
+        <input type="datetime-local" class="form-control" id="rentalStartDateTime" [(ngModel)]="rentDate">
+      </div>
+      
+      <div class="mb-3">
+        <label for="rentalEndDateTime" class="form-label">Kira Bitiş Tarihi</label>
+        <input type="datetime-local" class="form-control" id="rentalEndDateTime" [(ngModel)]="returnDate">
+      </div>
+      Dönüş Tarihi : {{returnDate}} Kiralama Tarihi : {{rentDate}}
+      
+      <div class="col d-grid gap-2 mt-4">
+        <button (click)="rentACar()" class="btn btn-primary" type="button">Kirala</button>
+      </div>
+    </div>
+  </div>
+  
+  
+     
+  
+    
